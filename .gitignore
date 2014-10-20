@@ -1,0 +1,42 @@
+# System files
+.DS_Store
+*.log
+*.vs10x
+*.suo
+*.docstates
+*.user
+*.stackdump
+*.[Cc]ache
+
+#WebStorm .idea
+.idea
+
+# Microsoft Office Word
+~$*.docx
+~*.tmp
+
+#.IDEA
+.idea
+
+# Build folders
+[Oo]bj
+[Bb]in
+AppPackages
+
+# Extension files
+*.ReSharper.*
+_ReSharper.*/
+*.DotSettings
+
+# Performance analysis files
+*.sap
+*/SubmissionInfo
+*/PerformanceLogs
+
+# Other
+[Tt]humbs.db
+
+# Extra
+!bin/*
+!nuget.exe 
+packages
