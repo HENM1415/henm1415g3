@@ -1,63 +1,140 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+@import url(http://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
 
 body {
-    background: #567;
-    font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
-}
-
-#login {
-    max-width: 400px;
-    min-width: 100px;
-    width: 50%;
-    padding: 0;
-    float: right;
-    margin: 8px auto 2%;
-    transition: opacity 1s;
-    -webkit-transition: opacity 1s;
-}
-
-#login h1 {
-    background: #3399cc;
-    padding: 20px 0;
-    margin: 0;
-    font-size: 140%;
-    font-weight: 300;
-    text-align: center;
-    color: #fff;
-}
-
-form {
-    background: #f0f0f0;
-    padding: 6% 4%;
-    margin: 0;
-}
-
-input[type="email"], input[type="password"] {
-    width: 92%;
     background: #fff;
-    margin-bottom: 4%;
-    border: 1px solid #ccc;
-    padding: 4%;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 95%;
-    color: #555;
-}
 
-input[type="submit"] {
-    width: 100%;
-    background: #3399cc;
-    border: 0;
-    padding: 4%;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 100%;
     color: #fff;
-    cursor: pointer;
-    transition: background .3s;
-    -webkit-transition: background .3s;
+    font-family: Arial;
+    font-size: 12px;
 }
 
-input[type="submit"]:hover {
-    background: #2288bb;
+.body {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -40px;
+    bottom: -40px;
+    width: auto;
+    height: auto;
+    background: url('http://legeforeningen.no/PageFiles/141065/aachen.jpg') no-repeat;
+    background-size: 100% auto;
+    -webkit-filter: blur(5px);
+    z-index: 0;
+}
+
+.grad {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -40px;
+    bottom: -40px;
+    width: auto;
+    height: auto;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.65))); /* Chrome,Safari4+ */
+    z-index: 1;
+    opacity: 0.7;
+}
+
+.header {
+    position: absolute;
+    top: calc(50% - 35px);
+    left: calc(50% - 280px);
+    z-index: 2;
+}
+
+.header div {
+    float: left;
+    color: #fff;
+    font-family: 'Exo', sans-serif;
+    font-size: 35px;
+    font-weight: 200;
+}
+
+.header div span {
+    color: #5379fa !important;
+}
+
+.login {
+    position: absolute;
+    top: calc(50% - 75px);
+    left: calc(50% - 50px);
+    height: 150px;
+    width: 350px;
+    padding: 10px;
+    z-index: 2;
+}
+
+.login input[type=text] {
+    width: 250px;
+    height: 30px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 2px;
+    color: #fff;
+    font-family: 'Exo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 4px;
+}
+
+.login input[type=password] {
+    width: 250px;
+    height: 30px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 2px;
+    color: #fff;
+    font-family: 'Exo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 4px;
+    margin-top: 10px;
+}
+
+.login input[type=button] {
+    width: 260px;
+    height: 35px;
+    background: #fff;
+    border: 1px solid #fff;
+    cursor: pointer;
+    border-radius: 2px;
+    color: #a18d6c;
+    font-family: 'Exo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 6px;
+    margin-top: 10px;
+}
+
+.login input[type=button]:hover {
+    opacity: 0.8;
+}
+
+.login input[type=button]:active {
+    opacity: 0.6;
+}
+
+.login input[type=text]:focus {
+    outline: none;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.login input[type=password]:focus {
+    outline: none;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.login input[type=button]:focus {
+    outline: none;
+}
+
+::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+::-moz-input-placeholder {
+    color: rgba(255, 255, 255, 0.6);
 }
