@@ -11,8 +11,7 @@ body {
     width: 100px;
     background: #3399cc;
     display: block;
-    margin: 0 auto;
-    margin-top: 1%;
+    margin: 1% auto 0;
     padding: 10px;
     text-align: center;
     text-decoration: none;
@@ -29,9 +28,7 @@ body {
 #login {
     width: 400px;
     padding: 0;
-    margin: 0 auto;
-    margin-top: 8px;
-    margin-bottom: 2%;
+    margin: 8px auto 2%;
     transition: opacity 1s;
     -webkit-transition: opacity 1s;
 }
@@ -39,10 +36,8 @@ body {
 #triangle {
     width: 0;
     padding: 0;
-    border-top: 12x solid transparent;
-    border-right: 12px solid transparent;
-    border-bottom: 12px solid #3399cc;
-    border-left: 12px solid transparent;
+    border: 12px solid transparent;
+    border-bottom-color: #3399cc;
     margin: 0 auto;
 }
 
