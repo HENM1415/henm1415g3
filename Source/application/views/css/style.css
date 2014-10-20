@@ -5,16 +5,15 @@ body {
     margin: 0;
     padding: 0;
     background: #fff;
-
     color: #fff;
-    font-family: Arial;
+    font-family: Arial, serif;
     font-size: 12px;
 }
 
 .body {
     position: absolute;
-    top: -20px;
-    left: -20px;
+    top: -40px;
+    left: -40px;
     right: -40px;
     bottom: -40px;
     width: auto;
@@ -94,7 +93,7 @@ body {
     margin-top: 10px;
 }
 
-.login input[type=submit] {
+.login input[type=submit], input[type=button] {
     width: 260px;
     height: 35px;
     background: #fff;
@@ -113,7 +112,15 @@ body {
     opacity: 0.8;
 }
 
+.login input[type=button]:hover {
+    opacity: 0.8;
+}
+
 .login input[type=submit]:active {
+    opacity: 0.6;
+}
+
+.login input[type=button]:active {
     opacity: 0.6;
 }
 
@@ -128,6 +135,10 @@ body {
 }
 
 .login input[type=submit]:focus {
+    outline: none;
+}
+
+.login input[type=button]:focus {
     outline: none;
 }
 
