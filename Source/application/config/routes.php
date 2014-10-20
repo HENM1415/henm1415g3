@@ -38,8 +38,14 @@
 |
 */
 
-$route['default_controller'] = "welcome";
+$route['default_controller'] = "main";
 $route['404_override'] = '';
+
+$route['login'] = 'main/validate_credentials';
+$route['logout'] = 'main/logout';
+$route['register'] = 'main/registration';
+$route['profile/(:num)'] = 'main/show_profile/$1';
+$route['profile'] = 'main/show_profile';
 
 
 /* End of file routes.php */
