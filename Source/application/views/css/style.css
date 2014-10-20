@@ -10,7 +10,7 @@ body {
     font-size: 12px;
 }
 
-.body {
+.background {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -22,12 +22,8 @@ body {
 
 .grad {
     position: absolute;
-    top: -20px;
-    left: -20px;
-    right: -40px;
-    bottom: -40px;
-    width: auto;
-    height: auto;
+    width: 100%;
+    height: 100%;
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.65))); /* Chrome,Safari4+ */
     z-index: 1;
     opacity: 0.7;
