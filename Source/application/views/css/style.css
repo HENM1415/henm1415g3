@@ -48,7 +48,7 @@ body {
     color: #5379fa !important;
 }
 
-.login {
+.user-form {
     position: absolute;
     top: calc(50% - 75px);
     left: calc(50% - 50px);
@@ -58,7 +58,7 @@ body {
     z-index: 2;
 }
 
-.login input[type=email] {
+.user-form input[type=email], input[type=text] {
     width: 250px;
     height: 30px;
     background: transparent;
@@ -68,10 +68,11 @@ body {
     font-family: 'Exo', sans-serif;
     font-size: 16px;
     font-weight: 400;
+    margin-top: 10px;
     padding: 4px;
 }
 
-.login input[type=password] {
+.user-form input[type=password] {
     width: 250px;
     height: 30px;
     background: transparent;
@@ -85,7 +86,7 @@ body {
     margin-top: 10px;
 }
 
-.login input[type=submit], input[type=button] {
+.user-form input[type=submit], input[type=button] {
     width: 260px;
     height: 35px;
     background: #fff;
@@ -100,37 +101,42 @@ body {
     margin-top: 10px;
 }
 
-.login input[type=submit]:hover {
+.user-form input[type=submit]:hover {
     opacity: 0.8;
 }
 
-.login input[type=button]:hover {
+.user-form input[type=button]:hover {
     opacity: 0.8;
 }
 
-.login input[type=submit]:active {
+.user-form input[type=submit]:active {
     opacity: 0.6;
 }
 
-.login input[type=button]:active {
+.user-form input[type=button]:active {
     opacity: 0.6;
 }
 
-.login input[type=email]:focus {
+.user-form input[type=email]:focus {
     outline: none;
     border: 1px solid rgba(255, 255, 255, 0.9);
 }
 
-.login input[type=password]:focus {
+.user-form input[type=text]:focus {
     outline: none;
     border: 1px solid rgba(255, 255, 255, 0.9);
 }
 
-.login input[type=submit]:focus {
+.user-form input[type=password]:focus {
+    outline: none;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.user-form input[type=submit]:focus {
     outline: none;
 }
 
-.login input[type=button]:focus {
+.user-form input[type=button]:focus {
     outline: none;
 }
 

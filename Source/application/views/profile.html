@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-<div class="body"></div>
+<div class="background"></div>
 <div class="grad"></div>
 
 <div class="header">
@@ -14,20 +14,20 @@
 </div>
 <br>
 
-<form class="login">
-<input id="FirstName" name="first_name" type="text" placeholder="First Name" required/><br>
-<input id="LastName" name="last_name" placeholder="First Name" maxlength="60"  required/><br>
-<input id="EmailAddress" name="email" placeholder="Email" maxlength="60" required/><br>
-<input id="Password" name="password" type="password" placeholder="Password" maxlength="60" required/><br>
-<input id="RetypePassword" name="password_repeat" placeholder="Retype Password" type="password" maxlength="60" required/><br>
-<input id="City" name="city" type="text" placeholder="City" maxlength="120" required /><br>
-<input id="Country" name="country" type="text" placeholder="Country" maxlength="120" required /><br>
-<input type="radio" name="gender" value="male" required>Male<br>
-<input type="radio" name="gender" value="female" required>Female<br>
-<input type="checkbox" name="orientation" value="male">Male<br>
-<input type="checkbox" name="orientation" value="female">Female<br>
-<br>
-<input id="skip_Submit" name="skip_Submit" type="submit" value="Submit" />
+<form class="user-form">
+    <input name="first_name" type="text" placeholder="First name" required/>
+    <input name="last_name" type="text" placeholder="Last name" required/>
+    <input name="email" type="email" placeholder="Email" required/>
+    <input name="password" type="password" placeholder="Password" required/>
+    <input name="password_repeat" placeholder="Retype password" type="password" required/>
+    <input name="city" type="text" placeholder="City" required/>
+    <input name="country" type="text" placeholder="Country" required/><br>
+    <input type="radio" name="gender" value="male" required>Male<br>
+    <input type="radio" name="gender" value="female" required>Female<br>
+    <input type="checkbox" name="orientation" value="male">Male<br>
+    <input type="checkbox" name="orientation" value="female">Female<br>
+    <br>
+    <input id="skip_Submit" name="skip_Submit" type="submit" value="Submit"/>
 </form>
 <br>
 </body>
