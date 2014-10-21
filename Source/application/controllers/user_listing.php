@@ -19,13 +19,9 @@ class User_listing extends CI_Controller {
 		}
 		else
 		{
-			//$this->load->view('v_userlisting');
 			$query = $this->users_model->search_user_by_name($name_str);
-			
-			foreach($query->result() as $row){
-				print_r($row);
-				echo "<br><br>";
-			}
+			$data = array('query' => $query);
+			$this->load->view('v_search_results', $data);
 		}
 	}
 }
