@@ -46,6 +46,7 @@ $route['logout'] = 'main/logout';
 $route['register'] = 'main/registration';
 $route['profile/(:num)'] = 'main/show_profile/$1';
 $route['profile'] = 'main/show_profile';
+$route['users'] = 'user_listing/list_users';
 
 
 /* End of file routes.php */
