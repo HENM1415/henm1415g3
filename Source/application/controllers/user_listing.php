@@ -8,8 +8,9 @@ class User_listing extends CI_Controller {
 		$this->load->model('users_model');
 	}
 	
-	function list_users($name_str){
-	
+	function list_users(){
+		$name_str = $this->input->get("name_str");
+		
 		$is_logged_in = $this->session->userdata('is_logged_in');
 	
 		if (!isset($is_logged_in) || TRUE != $is_logged_in)

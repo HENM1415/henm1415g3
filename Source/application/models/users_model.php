@@ -57,6 +57,7 @@ class Users_model extends CI_Model
 	function search_user_by_name($name_str){
 		$name_str = urldecode($name_str);
 		$name_arr = explode(" ", $name_str);
+
 		$this->db->select('*');
 		
 		if($name_str === ""){
@@ -66,7 +67,7 @@ class Users_model extends CI_Model
 			$this->db->or_where('last_name', $name_str);
 		} elseif (count($name_arr) == 2) {
 			$this->db->where('first_name', $name_arr[0]);
-			$this->db->where('last_name', $name_str[1]);
+			$this->db->where('last_name', $name_arr[1]);
 		}
 		
 		return $this->db->get(self::$table_name);
