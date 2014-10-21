@@ -10,6 +10,7 @@
 
 <div class="header">
     <div>Almost<span>Perfect</span></div>
+    <img id="user-pic" />
 </div>
 
 <form class="profile-form">

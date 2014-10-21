@@ -254,3 +254,12 @@ input[type=file] {
     font-size: 1.5em;
     font-weight: 300;
 }
+
+#user-pic {
+    width: 200px;
+    float: right;
+    height: 200px;
+    z-index: 100;
+    border: 5px solid black;
+    height: 200px;
+}
