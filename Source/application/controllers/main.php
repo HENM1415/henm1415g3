@@ -16,7 +16,7 @@ class Main extends CI_Controller {
 		$is_logged_in = $this->session->userdata('is_logged_in');
 		if (!isset($is_logged_in) || TRUE != $is_logged_in)
 		{
-			$this->load->view('test_login');
+			$this->load->view('v_login');
 		}
 		else
 		{
@@ -44,7 +44,7 @@ class Main extends CI_Controller {
 		else
 		{
 			$data = array('wrong_password' => TRUE);
-			$this->load->view('test_login', $data);
+			$this->load->view('v_login', $data);
 		}
 	}
 
@@ -54,7 +54,7 @@ class Main extends CI_Controller {
 	{
 		$this->session->sess_destroy();
 		$data = array();
-		$this->load->view('test_login', $data);
+		$this->load->view('v_login', $data);
 	}
 
 	// --------------------------------------------------------------------
@@ -63,24 +63,25 @@ class Main extends CI_Controller {
 	{
 		if ($this->input->post('submit'))
 		{
-			if ($this->input->post('filename'))
+			if (!empty($_FILES['userfile']['name']))
 			{
+				echo 'test';
 				$config['upload_path'] = FCPATH . '/user_pictures/';
-				$config['allowed_types'] = 'gif|jpg|jpeg|png';
+				$config['allowed_types'] = 'jpg|jpeg';
 				$config['encrypt_name'] = TRUE;
-				$this->CI->load->library('upload', $config);
+				$this->load->library('upload', $config);
 
-				if ( ! $this->CI->upload->do_upload())
+				if ( ! $this->upload->do_upload())
 				{
-					log_message('error', $this->CI->upload->display_errors());
+					log_message('error', $this->upload->display_errors());
 					$filename = '';
 					return FALSE;
 				}
 				else
 				{
-					$upload_data = $this->CI->upload->data();
+					$upload_data = $this->upload->data();
 					/* read the source image */
-					$source_image = imagecreatefrompng(FCPATH . '/user_pictures/'.$upload_data['file_name']);
+					$source_image = imagecreatefromjpeg(FCPATH . '/user_pictures/'.$upload_data['file_name']);
 					$width = imagesx($source_image);
 					$height = imagesy($source_image);
 					$desired_width = 300;
@@ -112,8 +113,12 @@ class Main extends CI_Controller {
 					$this->input->post('orientation'),
 					$filename
 			);
-
+exit;
 			redirect('login');
+		}
+		else
+		{
+			$this->load->view('test_register');
 		}
 	}
 
