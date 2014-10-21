@@ -173,3 +173,28 @@ input[type=file] {
     opacity: 0.9;
     background: transparent;
 }
+
+.closest-match {
+    margin-top: 110px;
+    margin-right: 100px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    position: relative;
+    width: 400px;
+    float: right;
+    height: 120px;
+}
+
+.header-text {
+    color: #fff;
+    font-family: 'Exo', sans-serif;
+    font-size: 3em;
+    font-weight: 300;
+}
+
+.normal-text {
+    color: #fff;
+    font-family: 'Exo', sans-serif;
+    font-size: 1.5em;
+    font-weight: 300;
+}

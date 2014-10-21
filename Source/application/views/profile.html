@@ -19,7 +19,7 @@
     <input name="password" type="password" placeholder="Password" required/>
     <input name="password_repeat" placeholder="Retype password" type="password" required/>
     <input name="city" type="text" placeholder="City" required/>
-    <input name="country" type="text" placeholder="Country" required/><br>
+    <input name="country" type="text" placeholder="Country" required/><br/>
 
     <input class="css-checkbox" type="radio" name="sex" id="male" value="male">
     <label class="css-label" for="male">Male</label>
@@ -28,6 +28,15 @@
     <label class="css-label" for="female">Female</label>
 
     <input id="skip_Submit" name="skip_Submit" type="submit" value="Submit"/>
+</form>
+
+<form class="closest-match">
+    <span class="normal-text">The closest person to you is:</span>
+    <br/>
+
+    <span class="header-text" id="names">Name Family</span>
+    <br/>
+    <input id="navigate-to-profile" value="View Profile" type="button"/>
 </form>
 </body>
 </html>
