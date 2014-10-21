@@ -7,7 +7,7 @@
 	
 	
 	<form action="<?php echo site_url('register')?>" enctype="multipart/form-data" method="post">
-	
+	<?php echo validation_errors(); ?>
 		Email <input name="email" /><br />
 		First <input name="first_name" /><br />
 		Last  <input name="last_name" /><br />

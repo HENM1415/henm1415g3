@@ -63,58 +63,80 @@ class Main extends CI_Controller {
 	{
 		if ($this->input->post('submit'))
 		{
-			if (!empty($_FILES['userfile']['name']))
-			{
-				echo 'test';
-				$config['upload_path'] = FCPATH . '/user_pictures/';
-				$config['allowed_types'] = 'jpg|jpeg';
-				$config['encrypt_name'] = TRUE;
-				$this->load->library('upload', $config);
+			/**
+			 * Set validation rules
+			 */
+			$this->load->library('form_validation');
+			$this->form_validation->set_rules('first_name', 'First name', 'trim|required');
+			$this->form_validation->set_rules('last_name', 'Last name', 'trim|required');
+			$this->form_validation->set_rules('birthdate', 'Date of Birth', 'trim|required');
+			$this->form_validation->set_rules('city', 'City', 'trim|required');
+			$this->form_validation->set_rules('country', 'Country', 'trim|required');
+			$this->form_validation->set_rules('country', 'Country', 'trim|required');
 
-				if ( ! $this->upload->do_upload())
+			$this->form_validation->set_rules('email', 'Email address', 'trim|valid_email|required|is_unique[users.email]');
+			$this->form_validation->set_message('is_unique', 'An account with the email provided is already registered.');
+
+			if (FALSE == $this->form_validation->run())
+			{
+				$this->load->view('test_register');
+			}
+			else
+			{
+				if (!empty($_FILES['userfile']['name']))
 				{
-					log_message('error', $this->upload->display_errors());
-					$filename = '';
-					return FALSE;
+					$config['upload_path'] = FCPATH . '/user_pictures/';
+					$config['allowed_types'] = 'jpg|jpeg';
+					$config['encrypt_name'] = TRUE;
+					$this->load->library('upload', $config);
+
+					if ( ! $this->upload->do_upload())
+					{
+						log_message('error', $this->upload->display_errors());
+						$filename = '';
+						return FALSE;
+					}
+					else
+					{
+						$upload_data = $this->upload->data();
+						/* read the source image */
+						$source_image = imagecreatefromjpeg(FCPATH . '/user_pictures/'.$upload_data['file_name']);
+						$width = imagesx($source_image);
+						$height = imagesy($source_image);
+						$desired_width = 300;
+						/* find the "desired height" of this thumbnail, relative to the desired width  */
+						$desired_height = floor($height * ($desired_width / $width));
+						// @todo cropping needs to be done correctly, this is a wrong solution...
+						$desired_height = $desired_height > $desired_width ? 120 : $desired_height;
+						/* create a new, "virtual" image */
+						$virtual_image = imagecreatetruecolor($desired_width, $desired_height);
+						/* copy source image at a resized size */
+						imagecopyresampled($virtual_image, $source_image, 0, 0, 0, 0, $desired_width, $desired_height, $width, $height);
+						/* create the physical thumbnail image to its destination */
+						imagejpeg($virtual_image, FCPATH . '/user_pictures/thumb_'.$upload_data['file_name']);
+						$filename = $upload_data['file_name'];
+					}
 				}
-				else
-				{
-					$upload_data = $this->upload->data();
-					/* read the source image */
-					$source_image = imagecreatefromjpeg(FCPATH . '/user_pictures/'.$upload_data['file_name']);
-					$width = imagesx($source_image);
-					$height = imagesy($source_image);
-					$desired_width = 300;
-					/* find the "desired height" of this thumbnail, relative to the desired width  */
-					$desired_height = floor($height * ($desired_width / $width));
-					// @todo cropping needs to be done correctly, this is a wrong solution...
-					$desired_height = $desired_height > $desired_width ? 120 : $desired_height;
-					/* create a new, "virtual" image */
-					$virtual_image = imagecreatetruecolor($desired_width, $desired_height);
-					/* copy source image at a resized size */
-					imagecopyresampled($virtual_image, $source_image, 0, 0, 0, 0, $desired_width, $desired_height, $width, $height);
-					/* create the physical thumbnail image to its destination */
-					imagejpeg($virtual_image, FCPATH . '/user_pictures/thumb_'.$upload_data['file_name']);
-					$filename = $upload_data['file_name'];
-				}
+
+
+				// validate password = password_ref
+				$user_id = $this->users_model->insert_user(
+						$this->input->post('email'),
+						$this->input->post('password'),
+						$this->input->post('first_name'),
+						$this->input->post('last_name'),
+						$this->input->post('birthdate'),
+						$this->input->post('city'),
+						$this->input->post('country'),
+						$this->input->post('gender'),
+						$this->input->post('orientation'),
+						$filename
+				);
+				exit;
+				redirect('login');
 			}
 
 
-			// validate password = password_ref
-			$user_id = $this->users_model->insert_user(
-					$this->input->post('email'),
-					$this->input->post('password'),
-					$this->input->post('first_name'),
-					$this->input->post('last_name'),
-					$this->input->post('birthdate'),
-					$this->input->post('city'),
-					$this->input->post('country'),
-					$this->input->post('gender'),
-					$this->input->post('orientation'),
-					$filename
-			);
-exit;
-			redirect('login');
 		}
 		else
 		{
