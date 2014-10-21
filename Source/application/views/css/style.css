@@ -55,10 +55,10 @@ body {
     position: absolute;
     top: calc(50% - 250px);
     left: calc(50% - 110px);
-    height: 500px;
+    height: 450px;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 5px;
-    width: 400px;
+    width: 260px;
     padding: 20px;
     z-index: 2;
 }
@@ -153,36 +153,23 @@ input[type=button]:focus {
     color: rgba(255, 255, 255, 0.6);
 }
 
-.picture-input {
-    visibility: hidden;
-    width: 0;
-    position: relative;
-}
-
-.picture-input::before {
-    content: 'Select picture';
-    width: 250px;
-    height: 30px;
-    background: transparent;
+#pictureWrap {
     border: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: 2px;
+    margin-top: 10px;
+}
+
+#pictureWrap span {
     color: #fff;
     font-family: 'Exo', sans-serif;
     font-size: 16px;
+    opacity: 0.5;
     font-weight: 400;
     margin-top: 10px;
     padding: 4px;
-    outline: none;
-    white-space: nowrap;
-    cursor: pointer;
-    visibility: visible;
-    position: absolute;
 }
 
-.picture-input:hover::before {
-    border-color: #ffffff;
-}
-
-.picture-input:active::before {
-    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+input[type=file] {
+    opacity: 0.9;
+    background: transparent;
 }
