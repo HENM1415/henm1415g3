@@ -193,6 +193,6 @@ class Main extends CI_Controller {
 			$data['nearest_user'] = $nearest_user;			
 		}
 		
-		$this->load->view('test_profile', $data);
+		$this->load->view('v_profile', $data);
 	}
 }

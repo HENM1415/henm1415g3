@@ -66,7 +66,7 @@ class Users_model extends CI_Model
 				case 'heterosexual': $gsearch_sql = 'AND gender = "f" '; break;
 				case 'bisexual': $gsearch_sql = ' '; break;
 				case 'homosexual': $gsearch_sql = 'AND gender = "m" '; break;
-			}	
+			}
 		}
 		else
 		{
@@ -77,15 +77,15 @@ class Users_model extends CI_Model
 				case 'homosexual': $gsearch_sql = 'AND gender = "f" '; break;
 			}
 		}
-		
-		
+
+
 		$sql = '
 		SELECT
 		*,
 		( 3959 * ACOS( COS( RADIANS('.$this->db->escape($lat).') ) * COS( RADIANS( users.lat ) )
 		* COS( RADIANS(users.lon) - RADIANS('.$this->db->escape($lon).')) + SIN(RADIANS('.$this->db->escape($lat).'))
 		* SIN( RADIANS(users.lat)))) AS distance
-		FROM users
+		FROM users WHERE user_id != '.$this->session->userdata('user_id').'
 		'.$gsearch_sql.'
 		ORDER BY distance
 		LIMIT 1';
@@ -100,5 +100,25 @@ class Users_model extends CI_Model
 		{
 			return $query->row();
 		}
+	}
+
+	function search_user_by_name($name_str)
+	{
+		$name_str = urldecode($name_str);
+		$name_arr = explode(" ", $name_str);
+
+		$this->db->select('*');
+
+		if($name_str === ""){
+			//do nothing
+		} elseif(count($name_arr) == 1){
+			$this->db->where('first_name', $name_str);
+			$this->db->or_where('last_name', $name_str);
+		} elseif (count($name_arr) == 2) {
+			$this->db->where('first_name', $name_arr[0]);
+			$this->db->where('last_name', $name_arr[1]);
+		}
+
+		return $this->db->get(self::$table_name);
 	}
 }
