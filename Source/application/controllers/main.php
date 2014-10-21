@@ -43,7 +43,9 @@ class Main extends CI_Controller {
 		}
 		else
 		{
-			$data = array('wrong_password' => TRUE);
+			$data = array();
+			if ($this->input->post('email'))
+				$data = array('wrong_password' => TRUE);
 			$this->load->view('v_login', $data);
 		}
 	}
@@ -61,7 +63,7 @@ class Main extends CI_Controller {
 
 	function registration()
 	{
-		if ($this->input->post('submit'))
+		if ($this->input->post('submit_registration'))
 		{
 			/**
 			 * Set validation rules
@@ -79,10 +81,11 @@ class Main extends CI_Controller {
 
 			if (FALSE == $this->form_validation->run())
 			{
-				$this->load->view('test_register');
+				$this->load->view('v_register');
 			}
 			else
 			{
+				$filename = '';
 				if (!empty($_FILES['userfile']['name']))
 				{
 					$config['upload_path'] = FCPATH . '/user_pictures/';
@@ -132,7 +135,6 @@ class Main extends CI_Controller {
 						$this->input->post('orientation'),
 						$filename
 				);
-				exit;
 				redirect('login');
 			}
 
@@ -140,7 +142,7 @@ class Main extends CI_Controller {
 		}
 		else
 		{
-			$this->load->view('test_register');
+			$this->load->view('v_register');
 		}
 	}
 

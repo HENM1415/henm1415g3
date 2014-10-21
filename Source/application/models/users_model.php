@@ -32,6 +32,7 @@ class Users_model extends CI_Model
 		$this->db->set('country', $country);
 		$this->db->set('gender', $gender);
 		$this->db->set('orientation', $orientation);
+		$this->db->set('filename', $filename);
 		
 		$this->db->insert(self::$table_name);
 		return $this->db->insert_id();

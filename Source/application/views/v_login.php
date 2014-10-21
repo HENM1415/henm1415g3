@@ -20,7 +20,7 @@
     <input type="email" name="email" placeholder="email" />
     <input type="password" name="password" placeholder="password" />
     <input type="submit" name="submit" value="Login" />
-    <input type="button" value="Register" />
+    <input type="button" value="Register" onclick="location.href='<?php echo site_url('register'); ?>';"/>
 </form>
 
 </body>
