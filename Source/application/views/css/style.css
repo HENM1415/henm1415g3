@@ -51,7 +51,19 @@ body {
     z-index: 2;
 }
 
-.user-form input[type=email], input[type=text] {
+.register-form {
+    position: absolute;
+    top: calc(50% - 250px);
+    left: calc(50% - 110px);
+    height: 500px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    width: 400px;
+    padding: 20px;
+    z-index: 2;
+}
+
+input[type=email], input[type=text] {
     width: 250px;
     height: 30px;
     background: transparent;
@@ -65,7 +77,7 @@ body {
     padding: 4px;
 }
 
-.user-form input[type=password] {
+input[type=password] {
     width: 250px;
     height: 30px;
     background: transparent;
@@ -79,7 +91,7 @@ body {
     margin-top: 10px;
 }
 
-.user-form input[type=submit], input[type=button] {
+input[type=submit], input[type=button] {
     width: 260px;
     height: 35px;
     background: #fff;
@@ -94,42 +106,42 @@ body {
     margin-top: 10px;
 }
 
-.user-form input[type=submit]:hover {
+input[type=submit]:hover {
     opacity: 0.8;
 }
 
-.user-form input[type=button]:hover {
+input[type=button]:hover {
     opacity: 0.8;
 }
 
-.user-form input[type=submit]:active {
+input[type=submit]:active {
     opacity: 0.6;
 }
 
-.user-form input[type=button]:active {
+input[type=button]:active {
     opacity: 0.6;
 }
 
-.user-form input[type=email]:focus {
+input[type=email]:focus {
     outline: none;
     border: 1px solid rgba(255, 255, 255, 0.9);
 }
 
-.user-form input[type=text]:focus {
+input[type=text]:focus {
     outline: none;
     border: 1px solid rgba(255, 255, 255, 0.9);
 }
 
-.user-form input[type=password]:focus {
+input[type=password]:focus {
     outline: none;
     border: 1px solid rgba(255, 255, 255, 0.9);
 }
 
-.user-form input[type=submit]:focus {
+input[type=submit]:focus {
     outline: none;
 }
 
-.user-form input[type=button]:focus {
+input[type=button]:focus {
     outline: none;
 }
 
@@ -141,4 +153,36 @@ body {
     color: rgba(255, 255, 255, 0.6);
 }
 
+.picture-input {
+    visibility: hidden;
+    width: 0;
+    position: relative;
+}
 
+.picture-input::before {
+    content: 'Select picture';
+    width: 250px;
+    height: 30px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 2px;
+    color: #fff;
+    font-family: 'Exo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 10px;
+    padding: 4px;
+    outline: none;
+    white-space: nowrap;
+    cursor: pointer;
+    visibility: visible;
+    position: absolute;
+}
+
+.picture-input:hover::before {
+    border-color: #ffffff;
+}
+
+.picture-input:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
