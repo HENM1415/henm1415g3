@@ -29,7 +29,7 @@ class Main extends CI_Controller {
 	function validate_credentials()
 	{
 		$query = $this->users_model->validate($this->input->post('email'), $this->input->post('password'));
-
+echo $this->db->last_query();
 		if (TRUE == $query)
 		{
 			$row = $query->row();
