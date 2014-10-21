@@ -8,7 +8,7 @@ class Users_model extends CI_Model
 	{
 		$this->db->where('email', $email);
 		$query = $this->db->get(self::$table_name);
-	
+
 		if (1 == $query->num_rows())
 		{
 			$user = $query->row();
@@ -16,12 +16,12 @@ class Users_model extends CI_Model
 			{
 				return $query;
 			}
-	
+
 		}
 		return FALSE;
 	}
-	
-	function insert_user($email, $password, $first_name, $last_name, $birthdate, $city, $country, $gender, $orientation, $filename)
+
+	function insert_user($email, $password, $first_name, $last_name, $birthdate, $city, $country, $gender, $orientation, $lat, $lon, $filename)
 	{
 		$this->db->set('email', $email);
 		$this->db->set('password', md5($password));
@@ -32,13 +32,15 @@ class Users_model extends CI_Model
 		$this->db->set('country', $country);
 		$this->db->set('gender', $gender);
 		$this->db->set('orientation', $orientation);
+		$this->db->set('lat', $lat);
+		$this->db->set('lon', $lon);
 		$this->db->set('filename', $filename);
-		
+
 		$this->db->insert(self::$table_name);
 		return $this->db->insert_id();
 	}
-	
-	
+
+
 	function get_user($user_id)
 	{
 		$this->db->select('*');
@@ -53,5 +55,22 @@ class Users_model extends CI_Model
 		{
 			return $query->row();
 		}
+	}
+
+	function find_nearest_users($lat, $lon)
+	{
+		$sql = '
+		SELECT
+		*,
+		( 3959 * ACOS( COS( RADIANS('.$this->db->escape($lat).') ) * COS( RADIANS( users.lat ) )
+		* COS( RADIANS(users.lon) - RADIANS('.$this->db->escape($lon).')) + SIN(RADIANS('.$this->db->escape($lat).'))
+		* SIN( RADIANS(users.lat)))) AS distance
+		FROM users
+		ORDER BY distance
+		LIMIT 1';
+
+		$query = $this->db->query($sql);
+
+		return $query->row();
 	}
 }

@@ -29,7 +29,6 @@ class Main extends CI_Controller {
 	function validate_credentials()
 	{
 		$query = $this->users_model->validate($this->input->post('email'), $this->input->post('password'));
-echo $this->db->last_query();
 		if (TRUE == $query)
 		{
 			$row = $query->row();
@@ -121,7 +120,13 @@ echo $this->db->last_query();
 					}
 				}
 
-
+				$coords = $this->input->post('coordinates');
+				$coords = substr($coords, 1);
+				$coords = substr($coords, 0, strlen($coords) - 1);
+				$latlon = split(',', $coords);
+				$lat = $latlon[0];
+				$lon = $latlon[1];
+				
 				// validate password = password_ref
 				$user_id = $this->users_model->insert_user(
 						$this->input->post('email'),
@@ -133,6 +138,8 @@ echo $this->db->last_query();
 						$this->input->post('country'),
 						$this->input->post('gender'),
 						$this->input->post('orientation'),
+						$lat,
+						$lon,
 						$filename
 				);
 				redirect('login');
@@ -174,12 +181,19 @@ echo $this->db->last_query();
 			);
 			$data['data'] = $data;
 
-			$this->load->view('test_profile', $data);
+			
 		}
 		else
 		{
-			echo 'No user found with id '. $user_id;
+			$data['error'] = 'No user found with id '. $user_id;
 		}
-			
+		
+		if ($this->session->userdata('user_id') == $user_id)
+		{
+			$nearest_user = $this->users_model->find_nearest_users($user->lat, $user->lon);
+			$data['nearest_user'] = $nearest_user;			
+		}
+		
+		$this->load->view('test_profile', $data);
 	}
 }
