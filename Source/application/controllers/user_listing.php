@@ -1,16 +1,14 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class User_listing extends CI_Controller {
-	
-	private static $table_name = 'users';
-	
+
 	function __construct()
 	{
 		parent::__construct();
 		$this->load->model('users_model');
 	}
 	
-	function list_users(){
+	function list_users($name_str){
 	
 		$is_logged_in = $this->session->userdata('is_logged_in');
 	
@@ -21,12 +19,11 @@ class User_listing extends CI_Controller {
 		else
 		{
 			//$this->load->view('v_userlisting');
-			
-			$this->db->select('*');
-			$query = $this->db->get(self::$table_name);
+			$query = $this->users_model->search_user_by_name($name_str);
 			
 			foreach($query->result() as $row){
 				print_r($row);
+				echo "<br><br>";
 			}
 		}
 	}
