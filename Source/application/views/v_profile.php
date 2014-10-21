@@ -9,8 +9,15 @@
 <div class="background"></div>
 
 <div class="header">
-    <div>Almost<span>Perfect</span></div>
-    <img id="user-pic" />
+    <div>Almost<span>Perfect</span>
+    
+     
+    
+    </div>
+   
+    <?php if ($filename): ?>
+    <img id="user-pic" src="<?php echo base_url('user_pictures/thumb_'.$filename); ?>" />
+    <?php endif; ?>
 </div>
 
 <form class="profile-form">
@@ -23,10 +30,15 @@
     <span class="header-text" name="gender"><?php echo ($gender == 'm') ? 'male' : 'female'; ?></span><br/>
     <span class="header-text" name="orientation"><?php echo $orientation; ?></span><br/>
 
+    <br/><br />
+    
+    <div style="color: #00CCFF;"><?php echo anchor('logout', 'Logout'); ?></div>
 </form>
 
-<form class="closest-match">
-    <input placeholder="Search by family..." type="text"/>
+
+<?php if ($this->session->userdata('user_id') == $user_id): ?>
+<form class="closest-match" action="<?php echo site_url('users'); ?>">
+    <input placeholder="Search by family..." type="text" name="name_str" />
     <input name="findButton" type="button" value="Find"/>
     <br/>
     <br/>
@@ -36,7 +48,8 @@
 
     <span class="header-text" id="names"><?php echo $nearest_user->first_name.' '.$nearest_user->last_name;?></span>
     <br/>
-    <input name="navigate-to-profile" value="View Profile" type="button"/>
+    <input name="navigate-to-profile" value="View Profile" type="button" onclick="location.href='<?php echo site_url('profile/'.$nearest_user->user_id); ?>'"/>
 </form>
+<?php endif; ?>
 </body>
 </html>

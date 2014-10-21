@@ -176,7 +176,8 @@ class Main extends CI_Controller {
 					'city' => $user->city,
 					'country' => $user->country,
 					'gender' => $user->gender,
-					'orientation' => $user->orientation
+					'orientation' => $user->orientation,
+					'filename' => $user->filename
 			);
 			$data['data'] = $data;
 

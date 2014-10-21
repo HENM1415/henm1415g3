@@ -231,7 +231,7 @@ input[type=file] {
 
 .closest-match {
     margin-top: 110px;
-    margin-right: 100px;
+    margin-right: 0px;
     padding: 10px;
     background-color: rgba(255, 255, 255, 0.1);
     position: relative;
@@ -244,7 +244,7 @@ input[type=file] {
 .header-text {
     color: #fff;
     font-family: 'Exo', sans-serif;
-    font-size: 3em;
+    font-size: 2em;
     font-weight: 300;
 }
 
@@ -256,10 +256,11 @@ input[type=file] {
 }
 
 #user-pic {
-    width: 200px;
+    width: 300px;
     float: right;
-    height: 200px;
+    height: 300px;
     z-index: 100;
     border: 5px solid black;
     height: 200px;
+    margin-right: 300px;
 }
