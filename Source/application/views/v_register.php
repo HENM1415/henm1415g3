@@ -22,7 +22,8 @@
 	</div>
 
 	<form class="register-form" id="registerform"
-		action="<?php echo site_url('register'); ?>" method="post">
+		action="<?php echo site_url('register'); ?>" method="post"
+		enctype="multipart/form-data">
 		<div style="color: #CC0000;">
 			<?php echo validation_errors(); ?>
 		</div>
@@ -44,14 +45,14 @@
 			value="<?php echo $this->input->post('country'); ?>" required /> <br>
 
 		<div id="pictureWrap">
-			<span>Picture</span> <input name="picture" type="file"
+			<span>Picture</span> <input name="userfile" type="file"
 				class="picture-input" />
 		</div>
-		<br> <input class="css-checkbox" type="radio" name="sex" id="male"
-			value="male" checked="checked"> <label class="css-label" for="male">Male</label>
+		<br> <input class="css-checkbox" type="radio" name="gender" id="male"
+			value="m" checked="checked"> <label class="css-label" for="male">Male</label>
 
 		<br /> <input class="css-checkbox" type="radio" class="css-checkbox"
-			name="sex" id="female" value="female"> <label class="css-label"
+			name="gender" id="female" value="f"> <label class="css-label"
 			for="female">Female</label>
 
 		<div>
@@ -65,9 +66,8 @@
 
 		</div>
 		<input id="coordinates" name="coordinates" type="hidden"
-			value="coordinates" /> <br> <input
-			name="submit_registration" type="submit" value="Submit"
-			onclick="codeAddress(); return false;"
+			value="coordinates" /> <br> <input name="submit_registration"
+			type="submit" value="Submit" onclick="codeAddress(); return false;"
 			onsubmit="codeAddress(); return false;" />
 	</form>
 </body>

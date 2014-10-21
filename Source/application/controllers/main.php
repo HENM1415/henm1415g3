@@ -62,7 +62,7 @@ class Main extends CI_Controller {
 
 	function registration()
 	{
-		if ($this->input->post('submit_registration'))
+		if ($this->input->post('first_name'))
 		{
 			/**
 			 * Set validation rules
@@ -72,7 +72,6 @@ class Main extends CI_Controller {
 			$this->form_validation->set_rules('last_name', 'Last name', 'trim|required');
 			$this->form_validation->set_rules('birthdate', 'Date of Birth', 'trim|required');
 			$this->form_validation->set_rules('city', 'City', 'trim|required');
-			$this->form_validation->set_rules('country', 'Country', 'trim|required');
 			$this->form_validation->set_rules('country', 'Country', 'trim|required');
 
 			$this->form_validation->set_rules('email', 'Email address', 'trim|valid_email|required|is_unique[users.email]');
