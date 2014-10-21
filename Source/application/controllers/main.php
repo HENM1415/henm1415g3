@@ -190,7 +190,7 @@ class Main extends CI_Controller {
 		
 		if ($this->session->userdata('user_id') == $user_id)
 		{
-			$nearest_user = $this->users_model->find_nearest_users($user->lat, $user->lon);
+			$nearest_user = $this->users_model->find_nearest_users($user->lat, $user->lon, $user->gender, $user->orientation);
 			$data['nearest_user'] = $nearest_user;			
 		}
 		

@@ -57,8 +57,28 @@ class Users_model extends CI_Model
 		}
 	}
 
-	function find_nearest_users($lat, $lon)
+	function find_nearest_users($lat, $lon, $gender, $orientation)
 	{
+		if ($gender == 'm')
+		{
+			switch ($orientation)
+			{
+				case 'heterosexual': $gsearch_sql = 'AND gender = "f" '; break;
+				case 'bisexual': $gsearch_sql = ' '; break;
+				case 'homosexual': $gsearch_sql = 'AND gender = "m" '; break;
+			}	
+		}
+		else
+		{
+			switch ($orientation)
+			{
+				case 'heterosexual': $gsearch_sql = 'AND gender = "m" '; break;
+				case 'bisexual': $gsearch_sql = ' '; break;
+				case 'homosexual': $gsearch_sql = 'AND gender = "f" '; break;
+			}
+		}
+		
+		
 		$sql = '
 		SELECT
 		*,
@@ -66,11 +86,19 @@ class Users_model extends CI_Model
 		* COS( RADIANS(users.lon) - RADIANS('.$this->db->escape($lon).')) + SIN(RADIANS('.$this->db->escape($lat).'))
 		* SIN( RADIANS(users.lat)))) AS distance
 		FROM users
+		'.$gsearch_sql.'
 		ORDER BY distance
 		LIMIT 1';
 
 		$query = $this->db->query($sql);
 
-		return $query->row();
+		if (0 == $query->num_rows())
+		{
+			return FALSE;
+		}
+		else
+		{
+			return $query->row();
+		}
 	}
 }
