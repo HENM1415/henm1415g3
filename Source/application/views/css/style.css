@@ -50,6 +50,18 @@ body {
     padding: 20px;
     z-index: 2;
 }
+.user2-form{
+    position: absolute;
+    top: calc(50% - 250px);
+    left: calc(50% - 110px);
+    height: 200px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    width: 260px;
+    padding: 20px;
+    z-index: 2;
+
+}
 
 .profile-form {
     position: absolute;
