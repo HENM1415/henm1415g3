@@ -50,7 +50,8 @@ body {
     padding: 20px;
     z-index: 2;
 }
-.user2-form{
+
+.user2-form {
     position: absolute;
     top: calc(50% - 250px);
     left: calc(50% - 110px);
@@ -207,7 +208,7 @@ input[type=file] {
     border-radius: 5px;
     width: 400px;
     float: right;
-    height: 120px;
+    height: 320px;
 }
 
 .header-text {
