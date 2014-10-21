@@ -24,14 +24,13 @@
 		} else {
 			coords = "0, 0";
 		}
-
+		
 		document.getElementById('coordinates').value = coords;
 		document.getElementById('registerform').submit();
 	  });
 	}
 	
 	google.maps.event.addDomListener(window, 'load', initialize);
-	
 	</script>
 </head>
 <body>
@@ -41,14 +40,14 @@
     <div>Almost<span>Perfect</span></div>
 </div>
 
-<class="register-form" id="registerform">
+<form class="register-form" id="registerform">
     <input name="first_name" type="text" placeholder="First name" required/>
     <input name="last_name" type="text" placeholder="Last name" required/>
     <input name="email" type="email" placeholder="Email" required/>
     <input name="password" type="password" placeholder="Password" required/>
     <input name="password_repeat" placeholder="Retype password" type="password" required/>
-    <input name="city" type="text" placeholder="City" required/>
-    <input name="country" type="text" placeholder="Country" required/>
+    <input id="city" name="city" type="text" placeholder="City" required/>
+    <input id="country" name="country" type="text" placeholder="Country" required/>
     <br>
 
     <div id="pictureWrap">
@@ -61,8 +60,9 @@
     <input class="css-checkbox" type="radio" class="css-checkbox" name="sex" id="female" value="female">
     <label class="css-label" for="female">Female</label>>
     <br>
-
-    <input id="skip_Submit" name="skip_Submit" type="submit" value="Submit"/>
+	<input id="coordinates" name="coordinates" type="hidden" value="coordinates"/>
+	
+    <input id="skip_Submit" name="skip_Submit" value="Submit" type="button" onclick="codeAddress(); return false; "/>
 </form>
 </body>
 </html>
